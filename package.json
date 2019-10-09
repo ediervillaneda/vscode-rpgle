@@ -1,0 +1,74 @@
+{
+  "name": "RpgLe",
+  "displayName": "RpgLe",
+  "description": "Rpg ILE and Command Program (CL) code support",
+  "version": "0.0.2",
+  "publisher": "EdiVilnav",
+  "readme": "README.md",
+	"icon": "rpg.png",
+  "author": {
+    "name": "Edier Villaneda"
+  },
+  "engines": {
+    "vscode": "^1.38.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "themes"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "rpgle",
+        "aliases": [
+          "Rpg ILE",
+          "rpgle"
+        ],
+        "extensions": [
+          ".rpg",
+          ".rpgle",
+          ".sqlrpgle"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "clle",
+        "aliases": [
+          "Cl ILE",
+          "clle"
+        ],
+        "extensions": [
+          ".clle",
+          ".cl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rpgle",
+        "scopeName": "source.rpgle",
+        "path": "./syntaxes/rpgle.tmLanguage.json"
+      },
+      {
+        "language": "clle",
+        "scopeName": "source.clle",
+        "path": "./syntaxes/clle.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "rpgle",
+        "path": "./snippets/snippets.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "RPG",
+        "uiTheme": "vs-dark",
+        "path": "./themes/rpgle-color-theme.json"
+      }
+    ]
+  }
+}
