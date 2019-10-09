@@ -1,0 +1,43 @@
+{
+  "Declarar DS": {"prefix": ["dcl-Ds", "dcds"], "body": ["dcl-Ds $1;", "end-Ds $1;"], "description": "Crea declaración de estructura DS"},
+  "Declarar Eval-Corr": {"prefix": "eval-", "body": ["eval-Corr $1;"],"description": "Declaración de Eval-Corr"},
+  "Declarar If": {
+    "prefix": "if",
+    "body": [
+      "If $1;",
+      "EndIf;"
+    ],
+    "description": "Declaracion de condicional If"
+  },
+  "Declarar Select": {
+    "prefix": "select",
+    "body": [
+      "Select;",
+      "  When $1;",
+      "  When $2;",
+      "  Other;",
+      "EndSl;"
+    ],
+    "description": "Declaracion de condicional Select"
+  },
+  "Declarar Interface": {
+    "prefix": ["dpi", "dcl-Pi"],
+    "body": [
+      "dcl-Pi *n LikeDs($1);"
+      "  $2 LikeDs($3) Const;",
+      "End-Pi;"
+    ],
+    "description": "Declaracion de Procedure Interface"
+  },
+  "Declarar If": {
+    "prefix": "/if",
+    "body": [
+      "/If defined($1)"
+      "/EndIf"
+    ],
+    "description": "Declaracion de Definición"
+  },
+  "Declaracion Char": {"prefix": "Char", "body": ["Char($1);"]},
+  "Declaracion Int": {"prefix": "int", "body": ["Int($1);"]},
+  "Declaracion Dcl-S": {"prefix": ["dcs", "dcl-s"], "body": ["dcl-s $1 $2;"]}
+}
