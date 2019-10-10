@@ -1,29 +1,9 @@
 {
-    "comments": {
-        "lineComment": "//",
-        "blockComment": [ "/*", "*/" ]
-    },
-    "brackets": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"]
-    ],
-    "autoClosingPairs": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
-        ["\\"", "\\""],
-        ["'", "'"],
-        ["/*", "*/" ]
-    ],,
+    "comments": {"lineComment": "//", "blockComment": [ "/*", "*/" ]},
+    "brackets": [["{", "}"], ["[", "]"], ["(", ")"]],
+    "autoClosingPairs": [["{", "}"], ["[", "]"],["(", ")"], ["\"", "\""], ["'", "'"], ["/*", "*/" ]],
     "autoCloseBefore": ";:.,=}])>` \n\t",
-    "surroundingPairs": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
-        ["\"", "\""],
-        ["'", "'"]
-    ],
+    "surroundingPairs": [["{", "}"],["[", "]"],["(", ")"],["\"", "\""],["'", "'"]],
     "indentationRules": {
       "increaseIndentPattern": "(?i)({(?!.+}).*|\\(|\\[|((else(\\s)?)?if|else|for(each)?|while|select|do|dow|when|Exec Sql).*:)\\s*(/[/*].*)?$",
       "decreaseIndentPattern": "(?i)^(.*\\*\\/)?\\s*((\\})|(\\)+[;,])|(\\][;,])|\\b(else:)|\\b((end(if|for(each)?|while|select|do|dow|when|Exec Sql));))"

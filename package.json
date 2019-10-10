@@ -1,8 +1,8 @@
 {
-  "name": "RpgLe",
+  "name": "rpgle",
   "displayName": "RpgLe",
   "description": "Rpg ILE and Command Program (CL) code support",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "EdiVilnav",
   "readme": "README.md",
 	"icon": "rpg.png",
@@ -15,7 +15,7 @@
   "categories": [
     "Programming Languages",
     "Snippets",
-    "themes"
+    "Themes"
   ],
   "contributes": {
     "languages": [
