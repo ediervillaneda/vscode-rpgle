@@ -21,27 +21,14 @@
     "languages": [
       {
         "id": "rpgle",
-        "aliases": [
-          "Rpg ILE",
-          "rpgle"
-        ],
-        "extensions": [
-          ".rpg",
-          ".rpgle",
-          ".sqlrpgle"
-        ],
+        "aliases": ["Rpg ILE","rpgle"],
+        "extensions": [".rpg",".rpgle",".sqlrpgle"],
         "configuration": "./language-configuration.json"
       },
       {
         "id": "clle",
-        "aliases": [
-          "Cl ILE",
-          "clle"
-        ],
-        "extensions": [
-          ".clle",
-          ".cl"
-        ],
+        "aliases": ["Cl ILE","clle"],
+        "extensions": [".clle",".cl"],
         "configuration": "./language-configuration.json"
       }
     ],

@@ -6,9 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2019-10-10
+### Added
+- Language support for CLLE commands
+
+### Changed
+### Removed
+
 ## [0.0.3] - 2019-10-10
 ### Added
+### Changed
 - Fix json errors
+
+### Removed
 
 ## [0.0.2] - 2019-10-09
 ### Added
