@@ -33,11 +33,11 @@
         },
         {
           "name": "keyword.control.switch.clle",
-          "match": "(?i)\\b(Select|When|Other|ENDSELECT)\\b"
+          "match": "(?i)\\b(Select|When|Other|EndSelect)\\b"
         },
         {
           "name": "keyword.control.loop.clle",
-          "match": "(?i)\\b(For|Do|Dow|Dou|EndDo|EndFor|Then|DOWHILE)\\b"
+          "match": "(?i)\\b(For|Do|Dow|Dou|EndDo|EndFor|Then|DoWhile)\\b"
         },
         {
           "name": "keyword.operator.clle",

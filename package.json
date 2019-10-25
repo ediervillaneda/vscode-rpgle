@@ -28,7 +28,7 @@
       {
         "id": "clle",
         "aliases": ["Cl ILE","clle"],
-        "extensions": [".clle",".cl"],
+        "extensions": [".clle",".cl",".bnd"],
         "configuration": "./language-configuration.json"
       }
     ],
