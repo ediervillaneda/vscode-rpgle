@@ -6,6 +6,9 @@ Best regards
 
 Edier Villaneda 2019
 
+## Instalation
+
+Install directory : %USERPROFILE%\.vscode\extensions\rpgle\
 
 
 ## Known Issues

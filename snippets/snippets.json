@@ -1,6 +1,6 @@
 {
-  "Declarar DS": {"prefix": ["dcl-Ds", "dcds"], "body": ["dcl-Ds $1;", "end-Ds $1;"], "description": "Crea declaración de estructura DS"},
-  "Declarar Eval-Corr": {"prefix": "eval-", "body": ["eval-Corr $1;"],"description": "Declaración de Eval-Corr"},
+  "Declarar DS": {"prefix": ["dcl-Ds", "dcds"], "body": ["dcl-Ds $1;", "end-Ds $1;"], "description": "Crea declaraciï¿½n de estructura DS"},
+  "Declarar Eval-Corr": {"prefix": "eval-", "body": ["eval-Corr $1;"],"description": "Declaraciï¿½n de Eval-Corr"},
   "Declarar If": {
     "prefix": "if",
     "body": [
@@ -23,19 +23,36 @@
   "Declarar Interface": {
     "prefix": ["dpi", "dcl-Pi"],
     "body": [
-      "dcl-Pi *n LikeDs($1);"
+      "dcl-Pi *n LikeDs($1);",
       "  $2 LikeDs($3) Const;",
       "End-Pi;"
     ],
     "description": "Declaracion de Procedure Interface"
   },
-  "Declarar If": {
-    "prefix": "/if",
+  "Declarar If condicional ": {
+    "prefix": "if",
     "body": [
-      "/If defined($1)"
-      "/EndIf"
+      "If $1;",
+      "EndIf;"
     ],
-    "description": "Declaracion de Definición"
+    "description": "DeclaraciÃ³n de If "
+  },
+  "Declarar If-Else Condicional": {
+    "prefix": "ifelse",
+    "body": [
+      "If $1;",
+      "Else;",
+      "EndIf;"
+    ],
+    "description": "DeclaraciÃ³n de If "
+  },
+  "Declarar If para Copy's": {
+    "prefix": "define",
+    "body": [
+      "/define($1)",
+      "/undefine($1)"
+    ],
+    "description": "DeclaraciÃ³n de If para Copy's"
   },
   "Declaracion Char": {"prefix": "Char", "body": ["Char($1);"]},
   "Declaracion Int": {"prefix": "int", "body": ["Int($1);"]},
