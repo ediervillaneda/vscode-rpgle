@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Rpg ILE",
   "patterns": [
+    {"include": "#storange"},
     {"include": "#others"},
     {"include": "#comment"},
     {"include": "#constant"},
@@ -12,14 +13,14 @@
     {"include": "#meta"},
     {"include": "#string"},
     {"include": "#support"},
-    {"include": "#storange"},
     {"include": "#variable"}
   ],
   "repository": {
     "comment": {
       "patterns": [
         {"name": "comment.line.double-slash.rpgle", "begin": "\\/\\/", "end": "\\n"},
-        {"name": "comment.block.rpgle", "begin": "\\/\\*", "end": "\\*\\/"}
+        {"name": "comment.block.rpgle", "begin": "\\/\\*", "end": "\\*\\/"},
+        {"name": "comment.line.rpgle", "match": "^\\*.*$"}
       ]
     },
     "constant": {
@@ -30,18 +31,29 @@
         {"name": "constant.language.boolean.false.rpgle", "match": "(?i)[*](Off)\\b"},
         {"name": "constant.language.boolean.true.rpgle", "match": "(?i)[*](On)\\b"},
         {"name": "constant.language.rpgle", "match": "(?i)[*](All|Alloc|Auto|Blanks|Blank|Dec|Entry|Hival|InLr|Keep|Lgl|Loval|N|Next|Proc|Usrctl|Var|Varsize|Zeros|Zero)"},
-        {"name": "constant.numeric.rpgle", "match": "\\b\\d+\\.?\\d*?\\b"}
+        {"name": "constant.numeric.rpgle", "match": "\\b\\d+\\.?\\d*?\\b"},
+        {"name": "constant.numeric.rpgle", "match": "(\\-|\\+)?((([0-9]+(\\.[0-9]+))|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?(?=\\s|\\.$|,|\\))"},
+        {"name": "constant.numeric.rpgle","match": "(\\-|\\+)?([0-9]+)(?=\\s|\\.$|,|\\))"}
       ]
     },
     "entity": {
       "patterns": [
         {"name": "entity.name.procedure.rpgle", "match": "(?i)\\b(dcl-proc|end-proc)\\b"},
-        {"match": "((Fn[A-Z]{1}[a-zA-Z]+|Pr[A-Z]{1}[a-zA-Z]+)\\()(.*?)(\\))", "captures": {
-            "1": {"name": "entity.name.function.rpgle"},
-            "4": {"name": "entity.name.function.rpgle"}
-          }
+        {"name": "entity.name.function.rpgle", "match": "(Pr[A-Z]{1}[a-zA-Z]+|Fn[A-Z]{1}[a-zA-Z]+)"},
+        {
+        "begin": "(Pr[A-Z]{1}[a-zA-Z]+|Fn[A-Z]{1}[a-zA-Z]+)",
+        "name": "entity.name.function.rpgle",
+        "patterns": [{
+          "match": "\\s(\\()(\\S*\\s*.*)(\\))\\;",
+          "captures": {
+            "1": {"name": "keyword.start.bracket.rpgle"},
+            "2": {"name": "support.variable.other"},
+            "3": {"name": "keyword.end.bracket.rpgle"}
+          }}
+        ],
+        "end": "(?i:\\;\\n)",
+        "endCaptures": "entity.name.function.rpgle"
         },
-        {"name": "entity.name.function.rpgle", "match": "(Fn[A-Z]{1}[a-zA-Z]+|Pr[A-Z]{1}[a-zA-Z]+)"},
         {"name": "entity.name.declaration.rpgle", "match": "\\b(dcl-s|dcl-Ds|end-Ds|dcl-Pi|end-Pi|dcl-Pr|end-Pr)\\b"},
         {"name": "entity.name.declaration.constant.rpgle", "match": "(?i)\\b(dcl-c)\\b"}
       ]
@@ -62,7 +74,7 @@
     },
     "markup": {
       "patterns": [
-        {"name": "markup.bold.rpgle", "match": "([ ](\\<|\\>|\\=|\\+\\*)[ ])"},
+        {"name": "markup.bold.rpgle", "match": "\\s+(?i:=|<|>|<=|>=|<>|\\+|\\-|\\*|\\/|b-and|b-or|b-xor|b-exor|b-not|b-left|b-right|and|or|equals|equal|greater\\s+than|less\\s+than|greater)(?=\\s+|\\.|$)"},
         {"name": "markup.italic.rpgle", "begin": "(?i)[\\/](Copy|Define|Else|Elseif|End-Exec|End-Free|Endif|Eof|Exec|Free|If|Include|Restore|Set|Space|Title|Undefine)\\b", "end": "\\n"}
       ]
     },
@@ -76,7 +88,7 @@
             "4": {"name": "storage.type.rpgle"}
           }
         },
-        {"match": "(?i)((Likeds)\\()(.*?)(\\))", "captures": {
+        {"match": "((LikeDs)\\()(.*?)(\\))", "captures": {
             "1": {"name": "storage.type.rpgle"},
             "3": {"name": "support.variable.rpgle"},
             "4": {"name": "storage.type.rpgle"}

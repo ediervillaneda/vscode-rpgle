@@ -5,7 +5,7 @@
 //   #75715e (focus)
 //   #f8f8f2 (editor foreground)
 {
-  "type": "dark",
+  "type": "monokai",
   "colors": {
     "activityBar.background": "#272822",
     "activityBar.dropBackground": "#414339",
@@ -181,6 +181,7 @@
     {"scope": "support.class", "name": "String", "settings": { "fontStyle":"italic", "foreground": "#6495ED"}},
     {"scope": "support.other", "name": "String", "settings": {"foreground": "#B0C4DE"}},
     {"scope": "support.variable", "name": "String", "settings": {"foreground": "#87CEEB"}},
+    {"scope": "support.variable.other", "name": "String", "settings": {"foreground": "#ffffff"}},
     {"scope": "token.debug-token", "settings": {"foreground": "#b267e6"}},
     {"scope": "token.error-token", "settings": {"foreground": "#f44747"}},
     {"scope": "token.info-token", "settings": {"foreground": "#6796e6"}},

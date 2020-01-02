@@ -7,8 +7,11 @@
   "autoClosingPairs": [
     { "open": "{", "close": "}" },
     { "open": "[", "close": "]" },
-    { "open": "(", "close": ")" }
-
+    { "open": "(", "close": ")" },
+    { "open": "'", "close": "'", "notIn": ["string", "comment"] },
+    { "open": "\"", "close": "\"", "notIn": ["string"] },
+    { "open": "`", "close": "`", "notIn": ["string", "comment"] },
+    { "open": "/**", "close": " */", "notIn": ["string"] }
   ],
   "autoCloseBefore": ";:.,=}])>` \n\t",
   "surroundingPairs": [
@@ -28,5 +31,6 @@
       "start": "(?i)^\\s*\\s*#?(Dcl-Proc|Dcl-Pi)\\b",
       "end": "(?i)^\\s*\\s*#?(End-Proc|End-Pi)\\b"
     }
-  }
+  },
+  "wordPattern": "[a-zA-Z0-9_-]+"
 }

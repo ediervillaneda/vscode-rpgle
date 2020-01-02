@@ -5,7 +5,7 @@
   "version": "0.0.3",
   "publisher": "EdiVilnav",
   "readme": "README.md",
-	"icon": "rpg.png",
+  "icon": "rpg.png",
   "author": {
     "name": "Edier Villaneda"
   },
@@ -18,25 +18,55 @@
     "Themes"
   ],
   "contributes": {
+    "configurationDefaults": {
+      "[rpgle]": {
+        "editor.autoClosingBrackets": "always",
+        "editor.autoSurround": "brackets",
+        "editor.fontSize": 12,
+        "editor.tabSize": 2,
+        "editor.rulers": [
+          6,
+          80,
+          112
+        ]
+      }
+    },
     "languages": [
       {
         "id": "rpgle",
-        "aliases": ["Rpg ILE","rpgle"],
-        "extensions": [".rpg",".rpgle",".sqlrpgle"],
-        "configuration": "./language-configuration.json"
+        "aliases": [
+          "Rpg ILE",
+          "rpgle", "RPGLE"
+        ],
+        "extensions": [
+          ".rpg",
+          ".rpgle",
+          ".sqlrpgle"
+        ],
+        "configuration": "./configuration/rpgle-configuration.json"
       },
       {
         "id": "clle",
-        "aliases": ["Cl ILE","clle"],
-        "extensions": [".clle",".cl",".bnd"],
-        "configuration": "./language-configuration.json"
+        "aliases": [
+          "Cl ILE",
+          "clle"
+        ],
+        "extensions": [
+          ".clle",
+          ".cl",
+          ".bnd"
+        ],
+        "configuration": "./configuration/clle-configuration.json"
       }
     ],
     "grammars": [
       {
         "language": "rpgle",
         "scopeName": "source.rpgle",
-        "path": "./syntaxes/rpgle.tmLanguage.json"
+        "path": "./syntaxes/rpgle.tmLanguage.json",
+        "embeddedLanguages": {
+            "meta.embedded.block.sql": "sql"
+        }
       },
       {
         "language": "clle",
@@ -52,8 +82,8 @@
     ],
     "themes": [
       {
-        "label": "RPG",
-        "uiTheme": "vs-dark",
+        "label": "Rpgle Theme",
+        "uiTheme": "vs",
         "path": "./themes/rpgle-color-theme.json"
       }
     ]
