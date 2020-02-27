@@ -2,80 +2,207 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Rpg ILE",
   "patterns": [
-    {"include": "#storange"},
-    {"include": "#others"},
-    {"include": "#comment"},
-    {"include": "#constant"},
-    {"include": "#entity"},
-    {"include": "#invalid"},
-    {"include": "#keyword"},
-    {"include": "#markup"},
-    {"include": "#meta"},
-    {"include": "#string"},
-    {"include": "#support"},
-    {"include": "#variable"}
+    {
+      "include": "#storange"
+    },
+    {
+      "include": "#others"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#entity"
+    },
+    {
+      "include": "#invalid"
+    },
+    {
+      "include": "#keyword"
+    },
+    {
+      "include": "#markup"
+    },
+    {
+      "include": "#meta"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#support"
+    },
+    {
+      "include": "#variable"
+    }
   ],
   "repository": {
     "comment": {
       "patterns": [
-        {"name": "comment.line.double-slash.rpgle", "begin": "\\/\\/", "end": "\\n"},
-        {"name": "comment.block.rpgle", "begin": "\\/\\*", "end": "\\*\\/"},
-        {"name": "comment.line.rpgle", "match": "^\\*.*$"}
+        {
+          "name": "comment.line.double-slash.rpgle",
+          "begin": "\\/\\/",
+          "end": "\\n"
+        },
+        {
+          "name": "comment.block.rpgle",
+          "begin": "\\/\\*",
+          "end": "\\*\\/"
+        },
+        {
+          "name": "comment.line.rpgle",
+          "match": "^\\*.*$"
+        }
       ]
     },
     "constant": {
       "patterns": [
-        {"name": "constant.character.escape.hex.rpgle", "match": "x\\'[0-9A-Fa-f]{1,2}\\'"},
-        {"name": "constant.character.escape.rpgle", "match": "\\\\."},
-        {"name": "constant.character.rpgle", "match": "\\b([A-Z][A-Z0-9]+)\\b"},
-        {"name": "constant.language.boolean.false.rpgle", "match": "(?i)[*](Off)\\b"},
-        {"name": "constant.language.boolean.true.rpgle", "match": "(?i)[*](On)\\b"},
-        {"name": "constant.language.rpgle", "match": "(?i)[*](All|Alloc|Auto|Blanks|Blank|Dec|Entry|Hival|InLr|Keep|Lgl|Loval|N|Next|Proc|Usrctl|Var|Varsize|Zeros|Zero)"},
-        {"name": "constant.numeric.rpgle", "match": "\\b\\d+\\.?\\d*?\\b"},
-        {"name": "constant.numeric.rpgle", "match": "(\\-|\\+)?((([0-9]+(\\.[0-9]+))|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?(?=\\s|\\.$|,|\\))"},
-        {"name": "constant.numeric.rpgle","match": "(\\-|\\+)?([0-9]+)(?=\\s|\\.$|,|\\))"}
+        {
+          "match": "(\\()([0-9]*)(:)([0-9]*)(\\))",
+          "captures": {
+            "1": {
+              "name": "meta.symbol.rpgle"
+            },
+            "2": {
+              "name": "constant.numeric.integer"
+            },
+            "3": {
+              "name": "meta.symbol.rpgle"
+            },
+            "4": {
+              "name": "constant.numeric.integer"
+            },
+            "5": {
+              "name": "meta.symbol.rpgle"
+            }
+          }
+        },
+        {
+          "name": "constant.character.escape.hex.rpgle",
+          "match": "x\\'[0-9A-Fa-f]{1,2}\\'"
+        },
+        {
+          "name": "constant.character.escape.rpgle",
+          "match": "\\\\."
+        },
+        {
+          "name": "constant.character.rpgle",
+          "match": "\\b([A-Z][A-Z0-9]+)\\b"
+        },
+        {
+          "name": "constant.language.boolean.false.rpgle",
+          "match": "(?i)[*](Off)\\b"
+        },
+        {
+          "name": "constant.language.boolean.true.rpgle",
+          "match": "(?i)[*](On)\\b"
+        },
+        {
+          "name": "constant.language.rpgle",
+          "match": "(?i)[*](All|Alloc|Auto|Blanks|Blank|Dec|Entry|Hival|InLr|Keep|Lgl|Loval|N|Next|Proc|Usrctl|Var|Varsize|Zeros|Zero)"
+        },
+        {
+          "name": "constant.numeric.rpgle",
+          "match": "\\b\\d+\\.?\\d*?\\b"
+        },
+        {
+          "name": "constant.numeric.rpgle",
+          "match": "(\\-|\\+)?((([0-9]+(\\.[0-9]+))|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?(?=\\s|\\.$|,|\\))"
+        },
+        {
+          "name": "constant.numeric.rpgle",
+          "match": "(\\-|\\+)?([0-9]+)(?=\\s|\\.$|,|\\))"
+        }
       ]
     },
     "entity": {
       "patterns": [
-        {"name": "entity.name.procedure.rpgle", "match": "(?i)\\b(dcl-proc|end-proc)\\b"},
-        {"name": "entity.name.function.rpgle", "match": "(Pr[A-Z]{1}[a-zA-Z]+|Fn[A-Z]{1}[a-zA-Z]+)"},
         {
-        "begin": "(Pr[A-Z]{1}[a-zA-Z]+|Fn[A-Z]{1}[a-zA-Z]+)",
-        "name": "entity.name.function.rpgle",
-        "patterns": [{
-          "match": "\\s(\\()(\\S*\\s*.*)(\\))\\;",
-          "captures": {
-            "1": {"name": "keyword.start.bracket.rpgle"},
-            "2": {"name": "support.variable.other"},
-            "3": {"name": "keyword.end.bracket.rpgle"}
-          }}
-        ],
-        "end": "(?i:\\;\\n)",
-        "endCaptures": "entity.name.function.rpgle"
+          "name": "entity.name.procedure.rpgle",
+          "match": "(?i)\\b(dcl-proc|end-proc)\\b"
         },
-        {"name": "entity.name.declaration.rpgle", "match": "\\b(dcl-s|dcl-Ds|end-Ds|dcl-Pi|end-Pi|dcl-Pr|end-Pr)\\b"},
-        {"name": "entity.name.declaration.constant.rpgle", "match": "(?i)\\b(dcl-c)\\b"}
+        {
+          "name": "entity.name.function.rpgle",
+          "match": "(Pr[A-Z]{1}[a-zA-Z0-9]+|Fn[A-Z]{1}[a-zA-Z0-9]+)"
+        },
+        {
+          "begin": "(Pr[A-Z]{1}[a-zA-Z0-9]+|Fn[A-Z]{1}[a-zA-Z0-9]+)",
+          "name": "entity.name.function.rpgle",
+          "patterns": [
+            {
+              "match": "\\s(\\()(\\S*\\s*.*)(\\))\\;",
+              "captures": {
+                "1": {
+                  "name": "keyword.start.bracket.rpgle"
+                },
+                "2": {
+                  "name": "support.variable.other"
+                },
+                "3": {
+                  "name": "keyword.end.bracket.rpgle"
+                }
+              }
+            }
+          ],
+          "end": "(?i:\\;\\n)",
+          "endCaptures": "entity.name.function.rpgle"
+        },
+        {
+          "name": "entity.name.declaration.rpgle",
+          "match": "\\b(dcl-s|dcl-Ds|end-Ds|dcl-Pi|end-Pi|dcl-Pr|end-Pr)\\b"
+        },
+        {
+          "name": "entity.name.declaration.constant.rpgle",
+          "match": "(?i)\\b(dcl-c)\\b"
+        }
       ]
     },
     "invalid": {
       "patterns": [
-        {"name": "invalid.deprecated.rpgle", "match": "(?i)\\b(BegSr|EndSr)\\b"}
+        {
+          "name": "invalid.deprecated.rpgle",
+          "match": "(?i)\\b(BegSr|EndSr)\\b"
+        }
       ]
     },
     "keyword": {
       "patterns": [
-        {"name": "keyword.control.conditional.rpgle", "match": "(?i)\\b(If|Else|ElseIf|EndIf)\\b"},
-        {"name": "keyword.control.switch.rpgle", "match": "(?i)\\b(Select|When|Other|EndSl)\\b"},
-        {"name": "keyword.control.loop.rpgle", "match": "(?i)\\b(For|Do|Dow|Dou|EndDo|EndFor|To)\\b"},
-        {"name": "keyword.operator.rpgle", "match": "\\b(Or|And)\\b"},
-        {"name": "keyword.operator.rpgle", "match": "\\b(Ind)\\b"}
+        {
+          "name": "keyword.control.conditional.rpgle",
+          "match": "(?i)\\b(If|Else|ElseIf|EndIf)\\b"
+        },
+        {
+          "name": "keyword.control.switch.rpgle",
+          "match": "(?i)\\b(Select|When|Other|EndSl)\\b"
+        },
+        {
+          "name": "keyword.control.loop.rpgle",
+          "match": "(?i)\\b(For|Do|Dow|Dou|EndDo|EndFor|To)\\b"
+        },
+        {
+          "name": "keyword.operator.rpgle",
+          "match": "\\b(Or|And)\\b"
+        },
+        {
+          "name": "keyword.operator.rpgle",
+          "match": "\\b(Ind)\\b"
+        }
       ]
     },
     "markup": {
       "patterns": [
-        {"name": "markup.bold.rpgle", "match": "\\s+(?i:=|<|>|<=|>=|<>|\\+|\\-|\\*|\\/|b-and|b-or|b-xor|b-exor|b-not|b-left|b-right|and|or|equals|equal|greater\\s+than|less\\s+than|greater)(?=\\s+|\\.|$)"},
-        {"name": "markup.italic.rpgle", "begin": "(?i)[\\/](Copy|Define|Else|Elseif|End-Exec|End-Free|Endif|Eof|Exec|Free|If|Include|Restore|Set|Space|Title|Undefine)\\b", "end": "\\n"}
+        {
+          "name": "markup.bold.rpgle",
+          "match": "\\s+(?i:=|<|>|<=|>=|<>|\\+|\\-|\\*|\\/|b-and|b-or|b-xor|b-exor|b-not|b-left|b-right|and|or|equals|equal|greater\\s+than|less\\s+than|greater)(?=\\s+|\\.|$)"
+        },
+        {
+          "name": "markup.italic.rpgle",
+          "begin": "(?i)[\\/](Copy|Define|Else|Elseif|End-Exec|End-Free|Endif|Eof|Exec|Free|If|Include|Restore|Set|Space|Title|Undefine)\\b",
+          "end": "\\n"
+        }
       ]
     },
     "meta": {
@@ -83,51 +210,107 @@
     },
     "storange": {
       "patterns": [
-        {"match": "(?i)((Dim|Extproc|Inz|Like||Procptr)\\()(.*?)(\\))", "captures": {
-            "1": {"name": "storage.type.rpgle"},
-            "4": {"name": "storage.type.rpgle"}
+        {
+          "match": "(?i)((Dim|Extproc|Inz|Like||Procptr)\\()(.*?)(\\))",
+          "captures": {
+            "1": {
+              "name": "storage.type.rpgle"
+            },
+            "4": {
+              "name": "storage.type.rpgle"
+            }
           }
         },
-        {"match": "((LikeDs)\\()(.*?)(\\))", "captures": {
-            "1": {"name": "storage.type.rpgle"},
-            "3": {"name": "support.variable.rpgle"},
-            "4": {"name": "storage.type.rpgle"}
+        {
+          "match": "((LikeDs)\\()(.*?)(\\))",
+          "captures": {
+            "1": {
+              "name": "storage.type.rpgle"
+            },
+            "3": {
+              "name": "support.variable.rpgle"
+            },
+            "4": {
+              "name": "storage.type.rpgle"
+            }
           }
         },
-        {"name": "storage.type.return.rpgle", "match": "(?i)(return)\\b"}
+        {
+          "name": "storage.type.return.rpgle",
+          "match": "(?i)(return)\\b"
+        }
       ]
     },
     "string": {
       "patterns": [
-        {"name": "string.quoted.single.rpgle", "begin": "\\'", "end": "\\'"}
+        {
+          "name": "string.quoted.single.rpgle",
+          "begin": "\\'",
+          "end": "\\'"
+        }
       ]
     },
     "support": {
       "patterns": [
-        {"name": "support.function.rpgle", "match": "(?i)\\b(Acq|Add|Adddur|Alloc|And|Bitoff|Biton|Cab|Call|Callb|Callp|Cas|Cat|Chain|Check|Checkr|Clear|Close|Commit|Comp|Corr|Dealloc|Define|Delete|Div|Dsply|Dump|Eval|Eval-Corr|Evalr|Except|Exfmt|Exsr|Extrct|Feod|Force|Goto|In|Iter|Kfld|Klist|Leave|Leavesr|Mhhzo|Mhlzo|Mlhzo|Mllzo|Monitor|Move|Movea|Movel|Mult|Mvr|Next|Not|Occur|On|Open|Or|Other|Out|Parm|Plist|Post|Read|Readc|Reade|Readp|Readpe|Realloc|Rel|Reset|Reset|Rolbk|Scan|Setgt|Setll|Setoff|Seton|Shtdn|Sorta|Sqrt|Sub|Subdur|Subst|Tag|Test|Testb|Testn|Testz|Time|Undefine|Unlock|Update|Write|Xfoot|Xlate|Z-Add|Z-Sub)\\b"},
-        {"match": "(?i)((Bindec|Char|Date|Float|Graph|Int|Object|Packed|Pointer|Time|Timestamp|Ucs2|Uns|Varchar|Vargraph|Zoned)\\()(.*?)(\\))", "captures": {
-            "1": {"name": "support.class.rpgle"},
-            "3": {"name": "constant.character.rpgle"},
-            "4": {"name": "support.class.rpgle"}
+        {
+          "name": "support.function.rpgle",
+          "match": "(?i)\\b(Acq|Add|Adddur|Alloc|And|Bitoff|Biton|Cab|Call|Callb|Callp|Cas|Cat|Chain|Check|Checkr|Clear|Close|Commit|Comp|Corr|Dealloc|Define|Delete|Div|Dsply|Dump|Eval|Eval-Corr|Evalr|Except|Exfmt|Exsr|Extrct|Feod|Force|Goto|In|Iter|Kfld|Klist|Leave|Leavesr|Mhhzo|Mhlzo|Mlhzo|Mllzo|Monitor|Move|Movea|Movel|Mult|Mvr|Next|Not|Occur|On|Open|Or|Other|Out|Parm|Plist|Post|Read|Readc|Reade|Readp|Readpe|Realloc|Rel|Reset|Reset|Rolbk|Scan|Setgt|Setll|Setoff|Seton|Shtdn|Sorta|Sqrt|Sub|Subdur|Subst|Tag|Test|Testb|Testn|Testz|Time|Undefine|Unlock|Update|Write|Xfoot|Xlate|Z-Add|Z-Sub)\\b"
+        },
+        {
+          "match": "(?i)((Bindec|Char|Date|Float|Graph|Int|Object|Packed|Pointer|Time|Timestamp|Ucs2|Uns|Varchar|Vargraph|Zoned)\\()(.*?)(\\))",
+          "captures": {
+            "1": {
+              "name": "support.class.rpgle"
+            },
+            "3": {
+              "name": "constant.character.rpgle"
+            },
+            "4": {
+              "name": "support.class.rpgle"
+            }
           }
         },
-        {"match": "(?i)([\\%](Abs|Addr|Alloc|Bitand|Bitnot|Bitor|Bitxor|Char|Check|Checkr|Date|Days|Dec|Dech|Decpos|Diff|Div|Editc|Editflt|Editw|Elem|Eof|Equal|Error|Fields|Float|Found|Graph|Hours|Int|Inth|Kds|Len|Lookup|Minutes|Months|Mseconds|Nullind|Occur|Open|Paddr|Paddr|Parms|Realloc|Rem|Replace|Scan|Seconds|Shtdn|Size|Sqrt|Status|Str|Sst||Subdt|This|Time|Timestamp|Tlookup|Trim|Triml|Trimr|Ucs2|Uns|Unsh|Xfoot|Xlate|Years)\\()(.*?)(\\))", "captures": {
-            "1": {"name": "support.class.rpgle"},
-            "4": {"name": "support.class.rpgle"}
+        {
+          "match": "(?i)([\\%](Abs|Addr|Alloc|Bitand|Bitnot|Bitor|Bitxor|Char|Check|Checkr|Date|Days|Dec|Dech|Decpos|Diff|Div|Editc|Editflt|Editw|Elem|Eof|Equal|Error|Fields|Float|Found|Graph|Hours|Int|Inth|Kds|Len|Lookup|Minutes|Months|Mseconds|Nullind|Occur|Open|Paddr|Paddr|Parms|Realloc|Rem|Replace|Scan|Seconds|Shtdn|Size|Sqrt|Status|Str|Sst||Subdt|This|Time|Timestamp|Tlookup|Trim|Triml|Trimr|Ucs2|Uns|Unsh|Xfoot|Xlate|Years)\\()(.*?)(\\))",
+          "captures": {
+            "1": {
+              "name": "support.class.rpgle"
+            },
+            "4": {
+              "name": "support.class.rpgle"
+            }
           }
         },
-        {"name": "support.variable.rpgle", "match": "\\b(Dstm[A-Z]{1}[a-zA-Z0-9]+)\\b"},
-        {"name": "support.type.rpgle", "match": "(?i) (Qualified|Template|Export|Const)\\b"}
+        {
+          "name": "support.variable.rpgle",
+          "match": "\\b(Dstm[A-Z]{1}[a-zA-Z0-9]+)\\b"
+        },
+        {
+          "name": "support.type.rpgle",
+          "match": "(?i) (Qualified|Template|Export|Const)\\b"
+        }
       ]
     },
     "variable": {
       "patterns": [
-        {"name": "variable.parameter.rpgle", "match": "(?i)[ ](:[a-zA-Z]*)\\b"}
+        {
+          "name": "variable.parameter.rpgle",
+          "match": "(?i)[ ](:[a-zA-Z]*)\\b"
+        }
       ]
     },
     "others": {
       "patterns": [
-        {"name": "support.constant.rpgle", "begin": "(?i)^[( |\\t)]*(exec)\\s+(sql)\\b", "end": "\\;\\n", "patterns": [{"include": "source.sql"}]}
+        {
+          "name": "support.constant.rpgle",
+          "begin": "(?i)^[( |\\t)]*(exec)\\s+(sql)\\b",
+          "end": "\\;\\n",
+          "patterns": [
+            {
+              "include": "source.sql"
+            }
+          ]
+        }
       ]
     }
   },

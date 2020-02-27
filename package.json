@@ -2,7 +2,7 @@
   "name": "rpgle",
   "displayName": "RpgLe",
   "description": "Rpg ILE and Command Program (CL) code support",
-  "version": "0.0.3",
+  "version": "0.0.20190227",
   "publisher": "EdiVilnav",
   "readme": "README.md",
   "icon": "rpg.png",
@@ -19,6 +19,15 @@
   ],
   "contributes": {
     "configurationDefaults": {
+      "workbench.iconTheme": "material-icon-theme",
+      "editor.formatOnSave": true,
+      "material-icon-theme.folders.color": "#7cb342",
+      "material-icon-theme.folders.theme": "classic",
+      "material-icon-theme.files.associations": {
+        "*.sqlrpgle": "processing",
+        "*.clle": "clojure",
+        "*.bnd": "gcp"
+      },
       "[rpgle]": {
         "editor.autoClosingBrackets": "always",
         "editor.autoSurround": "brackets",
@@ -29,6 +38,22 @@
           80,
           112
         ]
+      },
+      "[sql]": {
+        "editor.rulers": [
+          80,
+          112
+        ],
+        "editor.tabSize": 2
+      },
+      "[clle]": {
+        "editor.rulers": [
+          13,
+          24,
+          80,
+          112
+        ],
+        "editor.tabSize": 2
       }
     },
     "languages": [
@@ -36,7 +61,8 @@
         "id": "rpgle",
         "aliases": [
           "Rpg ILE",
-          "rpgle", "RPGLE"
+          "rpgle",
+          "RPGLE"
         ],
         "extensions": [
           ".rpg",
@@ -65,7 +91,7 @@
         "scopeName": "source.rpgle",
         "path": "./syntaxes/rpgle.tmLanguage.json",
         "embeddedLanguages": {
-            "meta.embedded.block.sql": "sql"
+          "meta.embedded.block.sql": "sql"
         }
       },
       {
@@ -83,8 +109,16 @@
     "themes": [
       {
         "label": "Rpgle Theme",
-        "uiTheme": "vs",
+        "uiTheme": "vs-dark",
         "path": "./themes/rpgle-color-theme.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "material-icon-rpgle-theme",
+        "label": "Material Icon Rpg Ile Theme",
+        "path": "./iconThemes/dist/material-icons.json",
+        "_watch": true
       }
     ]
   }
