@@ -14,11 +14,4 @@ Install directory : %USERPROFILE%\.vscode\extensions\rpgle\
 ## Known Issues
 None so far, it's under contruction.
 
-## Release Notes
-
-The compile is done with the IceBreak server, however a ssh version is on its way.
-
 The debugging is still under construction.
-
-### 0.1.0
-Initial release of RpgLe
