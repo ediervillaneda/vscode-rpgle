@@ -2,7 +2,7 @@
   "name": "rpgle",
   "displayName": "RpgLe",
   "description": "Rpg ILE and Command Program (CL) code support",
-  "version": "v.2020.02.27",
+  "version": "0.0.20200227",
   "publisher": "EdiVilnav",
   "readme": "README.md",
   "icon": "rpg.png",
